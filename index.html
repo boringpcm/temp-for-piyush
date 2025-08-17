@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piyush R. Maharana - Academic Website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400..700;1,400..700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <style>
+        /* --- Base Styles & Theme --- */
+        :root {
+            --bg-color: #F7F3E8; /* Light beige/off-white */
+            --bg-alt-color: #FFFFFF; /* White for alternating sections */
+            --text-color: #2D3748; /* Modern dark blue-grey for better readability */
+            --heading-color: #1c5371; /* Deep dark for modern headings */
+            --border-color: #E2E8F0; /* Lighter, modern border color */
+            --accent-color: #3182CE; /* Modern blue accent */
+            --font-serif: 'Lora', serif;
+            --font-sans: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+            --font-display: 'Poppins', sans-serif;
+        }
+
+        html {
+             scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 400;
+            margin: 0;
+            padding: 0;
+            line-height: 1.75;
+            letter-spacing: 0.01em;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .site-header .container {
+            max-width: 100%;
+            padding: 0 2rem;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-display);
+            color: var(--heading-color);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            text-transform: none;
+            letter-spacing: -0.01em;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 2.5rem;
+            font-weight: 600;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -0.75rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-color), var(--heading-color));
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+            color: var(--heading-color);
+        }
+        
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+
+        a:hover {
+            color: #2C5282;
+            text-decoration: none;
+            transform: translateY(-1px);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        section {
+            padding: 2.5rem 0;
+        }
+        
+        /* --- Section Differentiation --- */
+        main section:nth-of-type(even) {
+            background-color: var(--bg-alt-color);
+        }
+
+        /* --- Header --- */
+        .site-header {
+            padding: 0.5rem 0;
+            background-color: var(--heading-color); /* Dark teal background */
+            color: var(--bg-color);
+        }
+
+        .site-header .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: nowrap;
+            gap: 1rem;
+            width: 100%;
+        }
+        
+        .site-header .header-title-group h1,
+        .site-header .header-title-group .subtitle {
+            color: var(--bg-color); /* Light text on dark header */
+        }
+        
+        .site-header a {
+            color: var(--bg-color);
+        }
+
+        .header-title-group {
+            display: flex;
+            align-items: center;
+        }
+        
+
+
+        .header-title-group h1 {
+            font-size: 1.7rem;
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        
+        .header-title-group .subtitle {
+            font-size: 0.95rem;
+            margin: 0.25rem 0 0 0;
+            opacity: 0.9;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+        }
+
+        .site-nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: flex-end;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            flex-shrink: 0;
+        }
+        
+        .site-nav a {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--bg-color); /* White color for navigation items */
+            transition: all 0.2s ease;
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+        }
+
+        .site-nav a:hover {
+            color: var(--bg-color); /* Keep white color on hover */
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+        }
+
+        /* --- Grid Layouts --- */
+        .grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .grid-cols-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        /* --- Publication & Misc Card Styles --- */
+        .card {
+            margin-bottom: 1.5rem;
+        }
+
+        .card img {
+            max-width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            border: 1px solid var(--border-color);
+            display: block;
+            width: 100%;
+        }
+
+        /* Enhanced responsive image handling */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Image loading optimization */
+        img[src*=".gif"], img[src*=".png"], img[src*=".jpg"], img[src*=".jpeg"] {
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+        }
+
+        /* Ensure images don't overflow containers */
+        .tooltip-container img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Specific image size reduction for face_on_map.png */
+        .tooltip-container img[src*="face_on_map.png"] {
+            max-width: 75%;
+            height: auto;
+            margin: 0 auto;
+            display: block;
+        }
+
+        /* Profile image specific styling */
+        .header-title-group img {
+            border-radius: 50%;
+            height: 70px;
+            width: 70px;
+            margin-right: 1rem;
+            border: 2px solid var(--bg-color);
+            flex-shrink: 0;
+        }
+        
+        .card h3 {
+             font-size: 1.3rem;
+             font-weight: 600;
+             margin-bottom: 0.75rem;
+        }
+        
+        .card p, .card li {
+            font-size: 0.95rem;
+            color: var(--text-color);
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+        
+        .publication-category {
+            text-align: left;
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--heading-color);
+            margin-top: 2rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--border-color);
+            position: relative;
+        }
+
+        .publication-category::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--accent-color);
+            border-radius: 1px;
+        }
+
+        .publication-category:first-of-type {
+            margin-top: 0;
+        }
+
+        /* --- Skills --- */
+        #skills .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            text-align: center;
+        }
+
+        .skill-badge {
+            display: inline-block;
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #F7FAFC, #EDF2F7);
+            border: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--heading-color);
+            transition: all 0.2s ease;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(135deg, #EDF2F7, #E2E8F0);
+        }
+
+        /* --- Experience & Education --- */
+        .timeline-item {
+            margin-bottom: 1.5rem;
+        }
+        .timeline-item h3 {
+            font-size: 1.4rem;
+        }
+        .timeline-item p {
+            margin: 0.2rem 0;
+            font-size: 1rem;
+        }
+
+        /* --- Tooltip --- */
+        .tooltip-container {
+            position: relative;
+            display: inline-block;
+        }
+        .tooltip {
+            visibility: hidden;
+            width: 250px;
+            background-color: rgba(0, 0, 0, 0.85);
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            border-radius: 6px;
+            position: absolute;
+            z-index: 1000;
+            bottom: 105%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            font-family: var(--font-sans);
+        }
+        .tooltip-container:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+        .tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%; left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: rgba(0, 0, 0, 0.85) transparent transparent transparent;
+        }
+
+        /* ADDED: Video container for responsive YouTube embed */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            margin-top: 1rem;
+            border-radius: 4px;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* --- Footer --- */
+        .site-footer {
+            text-align: center;
+            padding: 2rem 0;
+            background-color: var(--heading-color);
+            color: var(--bg-color);
+        }
+
+        .site-footer a {
+            color: var(--bg-color);
+        }
+
+        .site-footer a:hover {
+            opacity: 0.8;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .site-header .header-content {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+            body {
+                 font-size: 0.95rem;
+                 line-height: 1.7;
+            }
+            .container {
+                 padding: 0 1rem;
+            }
+            .grid-cols-2 {
+                 grid-template-columns: 1fr;
+            }
+            .header-title-group h1 {
+                 font-size: 1.5rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+                margin-bottom: 2rem;
+            }
+            
+            h3 {
+                font-size: 1.25rem;
+            }
+            
+            /* Mobile image optimization */
+            .card img {
+                margin-bottom: 0.75rem;
+            }
+            
+            .grid {
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-title-group img {
+                height: 55px;
+                width: 55px;
+            }
+            
+            .header-title-group h1 {
+                font-size: 1.4rem;
+            }
+            
+            .header-title-group .subtitle {
+                font-size: 0.8rem;
+            }
+            
+            body {
+                font-size: 0.9rem;
+            }
+            
+            h2 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-title-group">
+                    <img src="H8RWOYre_400x400.jpg" alt="Profile picture of Piyush R. Maharana">
+                    <div>
+                        <h1 class="site-title">Piyush R. Maharana</h1>
+                        <p class="subtitle">Large Language Models | Machine Learning | Material Discovery</p>
+                    </div>
+                </div>
+                <nav class="site-nav">
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#education">Education</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#experience">Experience</a></li>
+                        <li><a href="#publications">Publications</a></li>
+                        <li><a href="#courses">Courses</a></li>
+                        <li><a href="#misc">Miscellaneous</a></li>
+                        <li><a href="#extracurriculars">Extracurriculars</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="about">
+            <div class="container">
+                <h2>About Me</h2>
+                <p style="text-align: center; max-width: 600px; margin: 0 auto;">
+                    Project associate at CSIR-National Chemical Laboratory. Working on LLMs, computational material discovery.
+                </p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container" style="text-align: center; max-width: 600px; margin: 0 auto;">
+                <h2>Get in Touch</h2>
+                <p>I'd love to connect :)</p>
+                <ul style="display: flex; justify-content: center; gap: 1rem; margin: 1rem 0;">
+                    <li><a href="https://github.com/catastropiyush"><i class="fab fa-github fa-lg"></i> Github</a></li>
+                    <li><a href="https://www.linkedin.com/in/piyush-ranjan-maharana-1b14b2197/"><i class="fab fa-linkedin fa-lg"></i> Linkedin</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="publications">
+            <div class="container">
+                <h2>Publications & Research</h2>
+
+                <h3 class="publication-category">Peer-Reviewed Articles</h3>
+                <div class="grid grid-cols-2">
+                    <div class="card">
+                        <h3>Retrieval augmented generation for building datasets from scientific literature</h3>
+                        <p>First Author, June 2025</p>
+                        <p>Abstract: Using large language models paired with retrieval augmented generation, a dataset of metal hydrides for solid-state hydrogen storage was created. The accuracy obtained was 93% in the cases tested. Thus, we demonstrate a pipeline to create datasets from scientific literature at minimal computational cost and high accuracy.</p>
+                        <ul>
+                            <li><a href="https://iopscience.iop.org/article/10.1088/2515-7639/ade1fa">Paper</a></li>
+                            <li><a href="https://chemrxiv.org/engage/chemrxiv/article-details/67e277f06dde43c9081f4b38">Preprint</a></li>
+                            <li><a href="https://github.com/catastropiyush/RAG-dataset-gen">Code</a></li>
+                        </ul>
+                        <div class="tooltip-container">
+                            <img src="RAG.png" alt="RAG workflow">
+                            <div class="tooltip">Workflow of the RAG extraction</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>HyStor: An Experimental Database of Hydrogen Storage Properties</h3>
+                        <p>Co-author, May 2024</p>
+                        <p>Abstract: In this work, we introduce the HyStor database, consisting of 1280 metal alloys along with their hydrogen storage capacities (H2 wt%) as a function of absorption temperature...</p>
+                        <ul><li><a href="https://www.sciencedirect.com/science/article/pii/S0360319924041168?via%3Dihub">Paper</a></li></ul>
+                        <div class="tooltip-container">
+                            <img src="H2_wt.png" alt="Hydrogen storage capacities of alloys">
+                            <div class="tooltip">Hydrogen storage capacities of alloys.</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Structure and Kinematics of the Milky Way Galaxy using Atomic Hydrogen</h3>
+                        <p>Conference Paper, June 2021</p>
+                        <p>Abstract: Presented this paper based on my undergrad thesis in 3rd International Conference on Recent Advances In Fundamental And Applied Sciences (RAFAS), 25-26 June 2021.</p>
+                        <ul><li><a href="https://iopscience.iop.org/article/10.1088/1742-6596/2267/1/012053/meta">Paper</a></li></ul>
+                         <div class="tooltip-container">
+                            <img src="rotation_curve.png" alt="Rotation Curve of Milky Way">
+                            <div class="tooltip">Rotation curve of the Milky Way Galaxy derived from HI observations.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="publication-category">Theses</h3>
+                <div class="grid grid-cols-2">
+                    <div class="card">
+                        <h3>Quantum Dynamics of H2 formation on interstellar dust grains</h3>
+                        <p>Master's Thesis, Central University of Punjab, India</p>
+                        <p>Advisor - Dr. Kousik Giri, February - June 2023</p>
+                        <p>Abstract: The details of H2 formation in the interstellar medium are still unclear... Our results show the introduction of the atoms neighbouring the carbon over which H is chemisorbed into the PES of Coronene C24H12, gives the correct energy partitioning with the nascent H2 taking ∼ 85% of the recombination energy.</p>
+                        <div class="tooltip-container">
+                            <img src="coronene.png" alt="Quantum dynamics of coronene">
+                            <div class="tooltip">This image shows the quantum dynamics simulation of H2 formation on a coronene molecule (C24H12).</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Spiral Structure and Dynamics of the Milky Way Galaxy</h3>
+                        <p>Undergraduate Thesis, University of Delhi, India</p>
+                        <p>Advisor - Dr. Vandana Batra, January - June 2021</p>
+                         <div class="tooltip-container">
+                            <img src="face_on_map.png" alt="Face on map of the galaxy">
+                            <div class="tooltip">Face-on view of the Milky Way Galaxy reconstructed from HI observations.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 class="publication-category">Other Research</h3>
+                 <div class="grid grid-cols-2">
+                     <div class="card">
+                        <h3>Spectral Index of Synchrotron emission of Crab Nebula</h3>
+                        <p>University of Delhi, India</p>
+                        <p>Advisor - Dr. Vandana Batra, September 2020</p>
+                        <p>Abstract: Using archival flux density data ranging from radio to optical from different observations, the spectral index of the nebula in the different electromagnetic regimes was determined.</p>
+                    </div>
+                 </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <div class="container">
+                <h2>Experience</h2>
+                <div class="timeline-item" style="max-width: 600px; margin: 0 auto; text-align: center;">
+                    <h3>Project Associate</h3>
+                    <p>CSIR-National Chemical Laboratory, India</p>
+                    <p>Advisor - Dr. Kavita Joshi</p>
+                    <p>August 2023 - Present</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="education">
+            <div class="container">
+                <h2>Education</h2>
+                <div class="grid grid-cols-2">
+                    <div class="timeline-item">
+                        <h3>M.Sc Computational Physics</h3>
+                        <p>Central University of Punjab, Punjab, India | November 2021 - June 2023</p>
+                        <p>Courses: Numerical Methods, Electronic Structure Theory, Molecular Dynamics, Density Functional Theory, Atomic and Molecular Spectroscopy</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>B.Sc Physics</h3>
+                        <p>University of Delhi, New Delhi, India | June 2018 - June 2021</p>
+                        <p>Courses: Classical Mechanics, Quantum Mechanics, Electromagnetic Theory, Statistical Mechanics, Nuclear Physics, Mathematical Physics</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="container">
+                <h2>Skills</h2>
+                <div class="skills-container">
+                    <span class="skill-badge">Python</span>
+                    <span class="skill-badge">Machine Learning</span>
+                    <span class="skill-badge">Large Language Models</span>
+                    <span class="skill-badge">Natural Language Processing</span>
+                    <span class="skill-badge">Density Functional Theory</span>
+                    <span class="skill-badge">Computational Physics</span>
+                    <span class="skill-badge">Mechanistic Interpretability</span>
+                    <span class="skill-badge">Neural Network Potentials</span>
+                    <span class="skill-badge">QUANTICS</span>
+                    <span class="skill-badge">ORCA</span>
+                    <span class="skill-badge">LAMMPS</span>
+                </div>
+            </div>
+        </section>
+        
+        <section id="courses">
+            <div class="container">
+                <h2>Courses & Workshops</h2>
+                <div class="grid grid-cols-2">
+                    <div class="card">
+                        <h3>AAPALI PSI-K 2025: Int. Conference on Electronic-Structure Theory</h3>
+                        <p>May 2025</p>
+                        <p>Attended lectures and presented my work on retrieval augmented generation for building datasets. More details at the <a href="http://sites.iiserpune.ac.in/~apali_psik/">conference website</a>.</p>
+                    </div>
+                    <div class="card">
+                        <h3>IIIT Hyderabad - 8th Summer School on AI</h3>
+                        <p>July 2024</p>
+                        <p>Research training event aiming at equipping participants with the relevant advances in the critical and fast developing area of artificial intelligence.</p>
+                    </div>
+                    <div class="card">
+                        <h3>UCL - Future of Materials Discovery Workshop</h3>
+                        <p>June 2024</p>
+                        <p>Workshop on AI and machine learning in the physical sciences.</p>
+                    </div>
+                    <div class="card">
+                        <h3>LLM Hackathon for Applications in Materials and Chemistry</h3>
+                        <p>May 2024</p>
+                        <p>Teamed up with the University of Liverpool to apply LLMs to improve property prediction for chemical compositions. Read our reflections on <a href="https://arxiv.org/abs/2411.15221">arXiV</a>.</p>
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/fQVjRmM-Hf4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>IISER Pune - Natural Language Processing</h3>
+                        <p>January - May 2024</p>
+                        <p>Attended a full semester course on Natural Language Processing.</p>
+                    </div>
+                    <div class="card">
+                        <h3>CDAC - Quantum Accelerated Computing</h3>
+                        <p>December 2023</p>
+                        <p>Attended lectures and hands-on sessions on Quantum Computing.</p>
+                    </div>
+                    <div class="card">
+                        <h3>IUCAA - Introductory Summer School in Astronomy & Astrophysics</h3>
+                        <p>May - June 2021</p>
+                        <p>Attended lectures on various different topics in astrophysics.</p>
+                    </div>
+                    <div class="card">
+                        <h3>RAD @ Home</h3>
+                        <p>June 2021</p>
+                        <p>Learned to process data from GMRT and other telescopes and to classify galaxies into different subtypes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="extracurriculars">
+            <div class="container">
+                <h2>Extracurriculars</h2>
+                 <div class="grid grid-cols-2">
+                    <div class="card"><h3>Volunteering</h3><p>August 2023 - Present: I teach kids and distribute surplus food to those in need as part of the NGO Robin Hood Army.</p></div>
+                    <div class="card"><h3>Astronomy Club</h3><p>2018 - 2022: Searching for comets in SOHO/LASCO satellite images and participating in astronomical observations.</p></div>
+                    <div class="card"><h3>International Asteroid Search Campaign</h3><p>April - May 2018: Two provisional asteroid discoveries recorded.</p></div>
+                    <div class="card"><h3>Supernova Hunters</h3><p>2017 - 2019: Discovered supernovas in Pan-STARRS1 data as part of a citizen science project.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="misc">
+            <div class="container">
+                <h2>Miscellaneous/Fun</h2>
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <p>I write sometimes on my <a href="https://piyushmaharanacats.blogspot.com/">blog</a>.</p>
+                    <p>Some fun projects and resources:</p>
+                    <ul style="display: inline-flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-top: 0.75rem;">
+                        <li><a href="journal_club_comp_chem.html">Computational Chemistry Journal Club</a></li>
+                        <li><a href="rdkit_SMILES.html">RDKIT Reaction Visualizer</a></li>
+                        <li><a href="arxiv_search.html">arXiV Paper Explorer</a></li>
+                        <li><a href="game.html">RPG world</a></li>
+                    </ul>
+                </div>
+                <div class="grid grid-cols-2">
+                    <div class="card">
+                        <h3>Neutron Diffusion Equation</h3>
+                        <img src="neutron_diffusion.jpeg" alt="Diffusion equation">
+                        <img src="implosion.gif" alt="implosion simulation">
+                    </div>
+                    <div class="card">
+                        <h3>Mayan Hieroglyphics</h3>
+                        <img src="IMG_20241126_161905673.jpg" alt="Mayan hieroglyphics">
+                    </div>
+                    <div class="card">
+                        <h3>Numerical Methods</h3>
+                        <div class="tooltip-container">
+                            <img src="gaussian_elimination(1).gif" alt="Gaussian elimination matrix">
+                            <div class="tooltip">Animation demonstrating the Gaussian elimination method for solving systems of linear equations.</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>1D Hard Disks</h3>
+                         <div class="tooltip-container">
+                            <img src="cloth_pin.png" alt="1D hard disk pin model">
+                            <div class="tooltip">Visualization of a 1D hard disk system, modeling molecular dynamics in a confined space.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+             <p>&copy; 2025 Piyush R. Maharana</p>
+             <a href="https://s01.flagcounter.com/more_mobile/yO6W/"><img src="https://s01.flagcounter.com/map/yO6W/size_s/txt_FFFFFF/border_CCCCCC/pageviews_0/viewers_0/flags_0/" alt="Flag Counter" border="0"></a>
+        </div>
+    </footer>
+</body>
+</html>
